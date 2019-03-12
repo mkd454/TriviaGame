@@ -25,7 +25,7 @@ Bootstrap Portfolio link: <https://mkd454.github.io/Bootstrap-Portfolio/>
 
 **[Click Here to Watch the Demo](https://youtu.be/fBIj8YsA9dk)**.
 
-- [ ] Create a trivia form with multiple choice or true/false options.
+- [x] Create a trivia form with multiple choice or true/false options.
 
 - [ ] The player will have a limited amount of time to finish the quiz. 
 
