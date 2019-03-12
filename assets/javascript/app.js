@@ -37,19 +37,42 @@ var incorrect=0;
 var unanswered=0;
 
 // Reset game
-function gameover () {
-  document.write("GAME OVER","<br>");
-  document.write("Final Score: ","<br>");
-  document.write("Correct: " + correct,"<br>");
-  document.write("Incorrect: " + incorrect,"<br>");
-  document.write("Unanswered: " + unanswered,"<br>");
- // Write a reset button "Try again?"
+function gameover () { // HIDE ALL ELEMENTS & DISPLAY ANSWER. THEN SHOW AGAIN WHEN RESET.
+  $(".timer").hide();
+  $(".quizPortion").hide();
+  $(".submit").hide();
+  $(".gif").hide();
+  $(".endGame").show();
+  $("#win").text(correct);
+  $("#lose").text(incorrect);
+  $("#unanswered").text(unanswered);
 }
+
+$(".reset").on("click", function () {
+  $(".timer").show();
+  $(".quizPortion").show();
+  $(".submit").show();
+  $(".gif").show();
+  $(".endGame").hide();
+  $("body").scrollTop(0);
+
+  time = 60;
+  $("#stopwatch").text("60");
+  correct = 0;
+  incorrect = 0;
+  unanswered = 0;
+  answeredQs = [];
+  hasBeenClicked = false;
+  clockRunning = true;
+  $("input:radio").prop("checked", false);
+  clockStart();
+})
 
 // Display the questions and choices when the quiz starts
 $(".start").on("click", function() {
   $(".submit").attr("style","display: initial;") // Display Submit button
   $(".start").attr("style","display: none;") // Hide Start button
+  $(".gif").attr("style","display: initial;");
   clockStart(); // Start Clock
   for (var i=0; i < quizBank.length; i++) {
     var question = quizBank[i].q;
@@ -72,7 +95,7 @@ var clockRunning = true;
 
 
 // Create the timer
-var time = 15;
+var time = 60;
 var intervalID;
 
 function clockStart () {
@@ -87,7 +110,7 @@ function decrement () {
   $("#stopwatch").text(time);
   // GAME OVER SCENARIOS
   // If time runs out
-  if (time === -1) {
+  if (time < 0) {
     clockStop();
     calcScore();
     gameover();
@@ -103,6 +126,8 @@ function clockStop () {
 // If player hits submit
 $(".submit").on("click",function(){
   hasBeenClicked = true;
+  clockRunning = false;
+  clockStop();
   calcScore();
   gameover();
 })
