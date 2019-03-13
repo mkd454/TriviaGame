@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(23,30,83);
+  background-image: url("../images/stage.gif");
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position-x: center;  
+  color: white;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Alter jumbotron */
+.jumbotron {
+  opacity: 0.75;
+  color: black;
+}
+
+.title {
+  color: black;
+  font-weight: bolder;
+  opacity: 1;
+}
+
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  align-items: center;
+}
+
+/* Game Area */
+.timer {
+  text-align: center;
+  background-color: lightslategray;
+  opacity: 0.8;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.quizArea {
+  background-color: midnightblue;
+  border-color: sandybrown;
+  border-width: medium;
+  opacity: 0.8;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: white;
+}
